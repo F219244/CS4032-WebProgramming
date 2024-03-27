@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Digital Clock</title>
+<style>
+body {
+  font-family: Arial, sans-serif;
+  background-color: #222;
+  color: #fff;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+.clock {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  font-size: 3rem;
+}
+
+.clock div {
+  padding: 5px 10px;
+  border-radius: 3px;
+  background: linear-gradient(to bottom, #444, #222);
+  box-shadow: inset 0 -3px 10px rgba(0, 0, 0, 0.5);
+  transition: all 0.3s ease;
+}
+
+.clock div:hover {
+  transform: translateY(-2px);
+}
+
+.period {
+  font-size: 1rem;
+  margin-left: 5px;
+}
+</style>
+</head>
+<body>
+<div class="clock">
+  <div class="hours">00</div>
+  <div class="divider">:</div>
+  <div class="minutes">00</div>
+  <div class="divider">:</div>
+  <div class="seconds">00</div>
+  <div class="period">AM</div>
+</div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+function updateClock() {
+  var now = new Date();
+  var hours = now.getHours();
+  var period = hours >= 12 ? 'PM' : 'AM';
+  hours = hours % 12 || 12; // Convert to 12-hour format
+  var minutes = now.getMinutes().toString().padStart(2, '0');
+  var seconds = now.getSeconds().toString().padStart(2, '0');
+
+  $('.hours').text(hours);
+  $('.minutes').text(minutes);
+  $('.seconds').text(seconds);
+  $('.period').text(period);
+}
+
+$(document).ready(function() {
+  updateClock();
+  setInterval(updateClock, 1000);
+});
+</script>
+</body>
+</html>

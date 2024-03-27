@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rimsha Sarfraz - Portfolio</title>
+<style>
+body {
+    font-family: 'Times New Roman', Times, serif;
+    margin: 0;
+    padding: 0;
+    background-image: url('bg2.jpg');
+    background-size: cover; /* Adjusts the size of the background image */
+    background-position: center; /* Centers the background image */
+}
+
+header {
+    background-color: #333;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+section {
+    padding: 20px;
+}
+
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+.project-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.project {
+    position: relative;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s;
+}
+
+.project img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px 5px 0 0;
+}
+
+.project-details {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    padding: 10px;
+    box-sizing: border-box;
+    transform: translateY(100%);
+    transition: transform 0.3s;
+}
+
+.project:hover .project-details {
+    transform: translateY(0);
+}
+
+.project-details h3,
+.project-details p {
+    margin: 0;
+    padding: 0;
+}
+
+form {
+    margin: 0 auto; /* Center the form horizontally */
+    max-width: 500px; /* Limit the width of the form */
+    padding: 20px; /* Add padding around the form */
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+    color: white;
+    border-radius: 5px;
+}
+
+form label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+form input,
+form textarea {
+    width: calc(100% - 16px); /* Adjust for padding and border */
+    padding: 8px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+form button {
+    width: 100%;
+    padding: 10px 20px;
+    background-color: #8a1b7f;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: #490051;
+}
+
+.profile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+    padding: 20px;
+}
+
+.profile-image {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid #333;
+    transition: transform 0.3s;
+}
+
+.profile:hover .profile-image {
+    transform: scale(1.1);
+}
+
+.profile-details {
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    padding: 20px;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    max-width: 500px;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.profile:hover .profile-details {
+    opacity: 1;
+}
+
+#skills {
+    background-color: #f9f9f9;
+    padding: 50px 0;
+    text-align: center;
+}
+
+.skills-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 20px;
+    list-style-type: none;
+    padding: 0;
+    margin: 0 auto;
+    max-width: 800px;
+}
+
+.skills-list li {
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    .skills-list {
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    }
+}
+
+@media (max-width: 480px) {
+    .skills-list {
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    }
+}
+</style>
+</head>
+<body>
+<header>
+    <h1>Rimsha Sarfraz</h1>
+    <nav>
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+
+<section id="about" style="text-align: center;">
+    <h2>About Me</h2>
+    <div class="profile">
+        <img src="Rimsha.jpg" alt="Rimsha Sarfraz" class="profile-image">
+        <div class="profile-details">
+            <p>As a developer, I am a passionate and detail-oriented individual with a strong foundation in web development technologies. With a keen interest in front-end development, I excel in creating responsive and visually appealing user interfaces using HTML, CSS, and JavaScript. My skills also extend to back-end development, where I am proficient in languages like Python and frameworks like Django. I am dedicated to continuous learning and staying updated with the latest trends and technologies in the field of web development. I am a team player with excellent communication skills, making me a valuable asset in any development team.
+            </p>
+        </div>
+    </div>
+</section>
+
+<section id="skills">
+    <h2>Skills</h2>
+    <ul class="skills-list">
+        <li>HTML</li>
+        <li>CSS</li>
+        <li>JavaScript</li>
+        <li>Bootstrap</li>
+        <li>Tailwind CSS</li>
+        <li>React</li>
+        <li>Node.js</li>
+        <li>Python</li>
+        <li>Django</li>
+        <li>SQL</li>
+    </ul>
+</section>
+
+<section id="projects">
+    <h2>Projects</h2>
+    <div class="project-grid">
+        <div class="project">
+            <img src="tr.jpg" alt="Project 1">
+            <div class="project-details">
+                <h3>Tour Management System</h3>
+                <p>My Tour Management System is a comprehensive software solution designed to assist tour operators in efficiently managing all aspects of their tours and travel business. It includes features such as managing tour packages, bookings, customer information, payments, and reporting. The system aims to streamline operations, improve efficiency, and enhance the overall customer experience.</p>
+            </div>
+        </div>
+        <div class="project">
+            <img src="em.png" alt="Project 2">
+            <div class="project-details">
+                <h3>Event Management System</h3>
+                <p>My Event Management System is a robust software platform that helps event planners and organizers manage various aspects of an event, from planning and promotion to registration and attendee management. It includes features for creating event websites, sending invitations, managing RSVPs, handling ticketing and payments, and tracking event analytics. The system aims to simplify the complex process of organizing events and ensure they run smoothly and successfully.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="contact">
+    <h2>Contact</h2>
+    <form id="contact-form">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required><br>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required><br>
+        <label for="purpose">Purpose of Contact:</label>
+        <input type="text" id="purpose" name="purpose" required><br>
+        <button type="submit">Submit</button>
+    </form>
+</section>
+
+<footer>
+    <p>&copy; 2024 Rimsha Sarfraz</p>
+</footer>
+</body>
+</html>
