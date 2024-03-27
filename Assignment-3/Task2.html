@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <style>
+          body {
+    background-image: url('bg3.avif');
+    background-size: cover;
+    background-repeat: no-repeat;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+#weather-container {
+    background-color: rgba(255, 255, 255, 0.8);
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+h2 {
+    color: #333;
+    margin-bottom: 20px;
+}
+
+input[type="text"] {
+    width: calc(100% - 16px);
+    padding: 8px;
+    margin-top: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 20px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+#temp-div p {
+    font-size: 40px;
+    margin-top: 20px;
+    color: #333;
+}
+
+#weather-info {
+    margin-top: 10px;
+    color: #555;
+}
+
+#weather-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    width: 100px;
+    height: 100px;
+    margin: 0 auto 10px; 
+    margin-bottom: 0;
+}
+
+    </style>
+</head>
+<body>
+    <div id="weather-container">
+        <h2>Weather App</h2>
+        <input type="text" id="city" placeholder="Enter city">
+        <button onclick="getWeather()">Search</button>
+
+        <img id="weather-icon" src="14085611.png" alt="Weather Icon">
+
+        <div id="temp-div"></div>
+
+        <div id="weather-info"></div>
+    </div>
+
+    <script>
+        function getWeather() {
+            const city = document.getElementById('city').value;
+
+            if (!city) {
+                alert('Please enter a city');
+                return;
+            }
+
+            const apiKey = 'e5f4b3df8565788a3ced9d2e867ba2b9';
+            const currentWeatherUrl = `https://api.openweathermap.org/data/2.5/weather?units=metric&q=${city}&appid=${apiKey}`;
+
+            fetch(currentWeatherUrl)
+                .then(response => response.json())
+                .then(data => {
+                    displayWeather(data);
+                })
+                .catch(error => {
+                    console.error('Error fetching weather data:', error);
+                    alert('Error fetching weather data. Please try again.');
+                });
+        }
+
+        function displayWeather(data) {
+            const tempDivInfo = document.getElementById('temp-div');
+            const weatherInfoDiv = document.getElementById('weather-info');
+            const weatherIcon = document.getElementById('weather-icon');
+
+            // Clear previous content
+            weatherInfoDiv.innerHTML = '';
+            tempDivInfo.innerHTML = '';
+
+            if (data.cod === '404') {
+                weatherInfoDiv.innerHTML = `<p>${data.message}</p>`;
+            } else {
+                const cityName = data.name;
+                const temperature = Math.round(data.main.temp);
+                const description = data.weather[0].description;
+                const iconCode = data.weather[0].icon;
+                const iconUrl = `https://openweathermap.org/img/wn/${iconCode}.png`;
+
+                const temperatureHTML = `
+                    <p>${temperature}°C</p>
+                `;
+
+                const weatherHtml = `
+                    <p>${cityName}</p>
+                    <p>${description}</p>
+                `;
+
+                tempDivInfo.innerHTML = temperatureHTML;
+                weatherInfoDiv.innerHTML = weatherHtml;
+                weatherIcon.src = iconUrl;
+                weatherIcon.alt = description;
+
+                showImage();
+            }
+        }
+
+        function showImage() {
+            const weatherIcon = document.getElementById('weather-icon');
+            weatherIcon.style.display = 'block'; // Make the image visible once it's loaded
+        }
+    </script>
+</body>
+</html>
